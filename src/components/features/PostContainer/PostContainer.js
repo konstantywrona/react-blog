@@ -6,15 +6,16 @@ const PostContainer = () => {
   const posts = useSelector(getAllPosts);
   return (
     <div className="d-flex flex-column flex-md-row flex-wrap justify-content-around mt-3">
-      {posts.map((post) => (
-        <PostCard
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          author={post.author}
-          date={post.publishedDate}
-          description={post.shortDescription}
-        />
+      {posts.map((post, index) => (
+        <div key={index}>
+          <PostCard
+            id={post.id}
+            title={post.title}
+            author={post.author}
+            date={post.publishedDate}
+            description={post.shortDescription}
+          />
+        </div>
       ))}
     </div>
   );
