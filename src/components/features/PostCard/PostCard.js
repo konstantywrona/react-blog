@@ -3,17 +3,20 @@ import { Card, Button } from 'react-bootstrap';
 
 const PostCard = (props) => {
   return (
-    <Card className="m-2">
+    <Card style={{ width: '18rem' }} className="mb-4">
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
-        <div>
+        <Card.Text>
           <b>Author:</b> {props.author}
-        </div>
-        <div>
+        </Card.Text>
+        <Card.Text>
           <b>Published:</b> {props.date}
-        </div>
-        <Card.Text className="mt-2">
-          <div>{props.description}</div>
+        </Card.Text>
+        <Card.Text>
+          <b>Category:</b> {props.category}
+        </Card.Text>
+        <Card.Text>
+          <b>Short description:</b> {props.description}
         </Card.Text>
         <Link key={props.id} to={'/post/' + props.id}>
           <Button variant="primary">Read more</Button>

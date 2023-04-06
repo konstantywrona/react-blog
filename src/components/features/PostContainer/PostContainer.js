@@ -15,6 +15,7 @@ const PostContainer = () => {
             author={post.author}
             date={dateToString(post.publishedDate)}
             description={post.shortDescription}
+            category={post.category}
           />
         </div>
       ))}
