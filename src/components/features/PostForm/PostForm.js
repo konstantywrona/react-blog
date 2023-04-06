@@ -1,6 +1,9 @@
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
-import dateFormat from 'dateformat';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
   const [title, setTitle] = useState(props.title || '');
@@ -46,14 +49,9 @@ const PostForm = ({ action, actionText, ...props }) => {
 
               <Form.Group className="mb-3" controlId="published">
                 <Form.Label>Published</Form.Label>
-                <Form.Control
-                  type="date"
-                  placeholder="Enter date"
-                  required
-                  onChange={(e) =>
-                    setPublishedDate(dateFormat(e.target.value, 'yyyy-mm-dd'))
-                  }
-                  value={publishedDate}
+                <DatePicker
+                  selected={publishedDate}
+                  onChange={(date) => setPublishedDate(date)}
                 />
               </Form.Group>
             </Col>
@@ -71,18 +69,8 @@ const PostForm = ({ action, actionText, ...props }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="content">
-              <Form.Label>Main Content</Form.Label>
-              <Form.Control
-                type="text"
-                as="textarea"
-                rows={10}
-                placeholder="Add your blog post text here."
-                required
-                onChange={(e) => setContent(e.target.value)}
-                value={content}
-              />
-            </Form.Group>
+            <Form.Label>Main Content</Form.Label>
+            <ReactQuill value={content} onChange={setContent} />
 
             <Button variant="primary" type="submit">
               {actionText}
